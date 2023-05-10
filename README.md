@@ -588,6 +588,8 @@ When making a POST request, the payload should be in JSON format, containing two
 
 ```
 
-## Rate Limiting
+## Rate Limits and Quotas
 
-We have not imposed a rate limit on our API. We kindly ask that you use the API responsibly and carefully, taking into consideration the potential impact on our services and other users. Thank you for your understanding and cooperation.
+When using our API, please be aware that rate limits and quotas apply. These limits and quotas are determined based on the specific terms and conditions outlined in your contract. To ensure seamless and uninterrupted access to our API, it is essential to stay within the allocated limits and adhere to your contract's guidelines.
+
+If you need more information on your rate limits and quotas or if you wish to discuss adjustments to your current plan, please reach out to our support team or refer to the documentation provided with your contract. Always make sure to monitor your API usage to avoid potential disruptions or additional charges.
