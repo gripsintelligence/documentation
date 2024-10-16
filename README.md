@@ -584,9 +584,105 @@ When making a POST request, the payload should be in JSON format, containing two
    }
 }
 
+```
+### 5. Domain Coupons
 
+#### Endpoint
+```https://app.gripsintelligence.com/api/data/v1?provider=pg```
+
+#### Method
+
+`POST`
+
+#### Payload
+
+When making a `POST` request, the payload should be in JSON format, containing two parameters: `query` and `variables`. The `query` parameter is a string representing the query, while the `variables` parameter is a JSON object containing any necessary data for use within the query. Ensure both parameters are correctly formatted in the JSON payload when constructing your API request.
+
+**Query**
+
+```graphql
+    input Date {
+      gte: String
+      lte: String
+    }
+
+    input Filters {
+      domain: String!
+      start_date: Date
+      end_date: Date
+    }
+
+    query domain_coupons($filters: Filters) {
+      data: fetch(filters: $filters) {
+          combine(fields: [code, description], type: Array, sort_desc: end_date) {
+            start_date: unique(a: start_date)
+            end_date: unique(a: end_date)
+          }
+        }
+    }
+```
+**Variables**
+
+	- `domain`: The domain property is a string representing the domain name. This property is used to filter data based on a specific domain.
+	- `start_date` (optional): The start_date property is an object containing gte (greater than or equal to) and/or lte (less than or equal to) keys. This property is used to filter data based on the start date range.
+    - `end_date` (optional): The end_date property is an object containing gte (greater than or equal to) and/or lte (less than or equal to) keys. This property is used to filter data based on the end date range.
 
 ```
+{
+  "filters": {
+    "domain": "wayfair.com",
+    "end_date": {
+      "gte": "2024-09-01"
+    }
+  }
+}
+```
+
+#### Response
+
+```
+{
+    "data": [
+        {
+            "code": "06WMTWR2JTQCR",
+            "description": "",
+            "start_date": "2024-10-11T00:00:00.000Z",
+            "end_date": "2024-10-15T00:00:00.000Z"
+        },
+        {
+            "code": "06WMT698Y5E0K",
+            "description": "",
+            "start_date": "2024-10-06T00:00:00.000Z",
+            "end_date": "2024-10-11T00:00:00.000Z"
+        },
+        {
+            "code": "09CZ010W57N2Y",
+            "description": "",
+            "start_date": "2024-10-09T00:00:00.000Z",
+            "end_date": "2024-10-11T00:00:00.000Z"
+        },
+        {
+            "code": "0C659DJZAX219",
+            "description": "",
+            "start_date": "2024-10-08T00:00:00.000Z",
+            "end_date": "2024-10-11T00:00:00.000Z"
+        },
+        {
+            "code": "0GQXA7Y9YZMW6",
+            "description": "",
+            "start_date": "2024-10-07T00:00:00.000Z",
+            "end_date": "2024-10-11T00:00:00.000Z"
+        },
+        {
+            "code": "0P02M12R4SX9X",
+            "description": "",
+            "start_date": "2024-10-07T00:00:00.000Z",
+            "end_date": "2024-10-11T00:00:00.000Z"
+        }
+    ]
+}
+```
+
 
 ## Rate Limits and Quotas
 
