@@ -621,13 +621,14 @@ When making a `POST` request, the payload should be in JSON format, containing t
         }
     }
 ```
+
 **Variables**
 
-	- `domain`: The domain property is a string representing the domain name. This property is used to filter data based on a specific domain.
-	- `start_date` (optional): The start_date property is an object containing gte (greater than or equal to) and/or lte (less than or equal to) keys. This property is used to filter data based on the start date range.
-    - `end_date` (optional): The end_date property is an object containing gte (greater than or equal to) and/or lte (less than or equal to) keys. This property is used to filter data based on the end date range.
+- `domain`: The domain property is a string representing the domain name. This property is used to filter data based on a specific domain.
+- `start_date` (optional): The start_date property is an object containing gte (greater than or equal to) and/or lte (less than or equal to) keys. This property is used to filter data based on the start date range.
+- `end_date` (optional): The end_date property is an object containing gte (greater than or equal to) and/or lte (less than or equal to) keys. This property is used to filter data based on the end date range.
 
-```
+```json
 {
   "filters": {
     "domain": "wayfair.com",
@@ -640,7 +641,7 @@ When making a `POST` request, the payload should be in JSON format, containing t
 
 #### Response
 
-```
+```json
 {
     "data": [
         {
